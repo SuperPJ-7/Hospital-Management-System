@@ -1,0 +1,45 @@
+.profcon{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.patient-info{
+    display:flex;
+    justify-content: flex-start;
+    
+}
+.patient-info .row{
+    margin:10px;
+    display:flex;
+    flex-direction: column;
+    gap:2.5rem;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.photo{
+    margin-top:10px;
+}
+.photo img{
+    width:180px;
+}
+
+.appointment-container{
+    
+    height:80vh;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+.form-container{
+    padding:10px 0px 32px 32px;
+    display: flex;
+    flex-direction: column;
+    gap:3rem;
+}
+.form-container .input{
+    background-color: white;
+}
+.form-container label{
+    width:215px;
+    display: inline-block;
+}

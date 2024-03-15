@@ -1,3 +1,5 @@
+--import this file in the import section of phpmyadmin
+
 --create table admin
 create table admin(
 	email varchar(255) primary key,
@@ -12,7 +14,7 @@ create table doctor(
     spec varchar(30) not null,
     contact int not null,
     email varchar(255) UNIQUE not null,
-    lic varchar(255) not null,
+    lic varchar(255) not null UNIQUE,
     password varchar(255) not null
 );
 

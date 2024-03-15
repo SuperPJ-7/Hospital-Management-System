@@ -179,20 +179,22 @@ body{
 }
 /* admin.php styling*/
 
-main .admin-container{
+main .admin-container,
+main .patient-container{
     display:flex;
     width:100%;
     height:100svh;
 }
-.admin-links{
+.admin-links,.patient-links{
     display:flex;
     flex-direction: column;
     gap:3rem;
-    width:11%;
+    width:12%;
     margin:10px;
     padding-left:10px;
 }
-.admin-links a{
+.admin-links a,
+.patient-links a{
     text-decoration: none;
     color:black;
     font-size:19px;
@@ -234,7 +236,8 @@ main .admin-container{
     display:flex;
     flex-direction: column;
 }
-.admin-links .active{
+.admin-links .active,
+.patient-links .active{
     background:rgb(62,62,188);
     color:white;
     border-radius:6px;

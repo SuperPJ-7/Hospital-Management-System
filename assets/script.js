@@ -59,29 +59,32 @@ function showForm(id,currentRole){
       document.getElementById("sideFormPat").style.width = "0";
     }
   
-  //links
+  //admin-links
   var previous_link = document.getElementById('dash');
   var previousContent = document.getElementById('dashboard')
   
   function showcontent(id,currentlink){
-    currentlink.classList.add('active');
-    previous_link.classList.remove('active');
-    // let contentDivs = document.querySelectorAll('.content');
-    // contentDivs.forEach(
-    //   function(div){
-    //     div.classList.add('hidden');
-    //   }
-    // )
-  
-    previousContent.classList.add('hidden');
-    let selectedContent = document.getElementById(id);
-    selectedContent.classList.remove('hidden');
-  
+    if(previous_link!=currentlink){
+      previous_link.classList.remove('active');
+      currentlink.classList.add('active');
+      // let contentDivs = document.querySelectorAll('.content');
+      // contentDivs.forEach(
+      //   function(div){
+      //     div.classList.add('hidden');
+      //   }
+      // )
     
-    previous_link = currentlink;
-    previousContent = selectedContent;
+      previousContent.classList.add('hidden');
+      let selectedContent = document.getElementById(id);
+      selectedContent.classList.remove('hidden');
     
+      
+      previous_link = currentlink;
+      previousContent = selectedContent;
+    }
   }
+  
+
   
   //doctor search
   document.getElementById('btn-doc-search').addEventListener("click",doctorTable);
