@@ -23,6 +23,7 @@ if(isset($_SESSION['userid'])){
     <title>Hospital Management System</title>
     <link rel="stylesheet" type="text/css" href="assets/style.css">
     <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+    
 </head>
 <body>
     <nav>
@@ -43,7 +44,8 @@ if(isset($_SESSION['userid'])){
         <h2 class="welcome">Welcome</h2>
         <div class="container">
             <div class="hospital-icon">
-                <img src="assets/images/hospital.png" alt="hospital icon">
+                <!-- <img src="assets/images/hospital.png" alt="hospital icon"> -->
+                <i class="fa-solid fa-truck-medical fa-fade fa-9x" style="color: #ffffff;"></i>
             </div>
             <div class="form-container">
                 <div class="login-role">
@@ -121,5 +123,6 @@ if(isset($_SESSION['userid'])){
         </div>
     </main>
     <script src="assets/script.js"></script>
+    <script src="https://kit.fontawesome.com/a865739a53.js" crossorigin="anonymous"></script>
 </body>
 </html>

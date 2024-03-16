@@ -55,7 +55,7 @@
 
 	</nav>
 	<main class="ad-main">
-		<h2 class="welcome">Dashboard</h2>
+		<h2 class="welcome" id="heading">Dashboard</h2>
 		<div class="admin-container">
 			<div class="admin-links">
 				<a href="#" onclick="showcontent('dashboard',this)" id='dash' class="links active">Dashboard</a>
@@ -362,79 +362,40 @@
 			<!-- appointment -->
 			<div id="appointment" class="content hidden">
 			
-				<div class="search">
-					
-					<!-- search using AJAX -->
-					<input type="email" id="patient-email" placeholder="Enter email">
-					<button class="button" id="btn-pat-search">Seach</button>
-
-					<!-- offcanvas patient add form -->
-					<button id="openFormBtnPat" class="button" onclick="openFormPat()">Add Patient</button>
-
-					<div id="sideFormContainerPat">
-						<div id="sideFormPat">
-							<span class="closeBtn" onclick="closeFormPat()">×</span>
-							<h2>Enter Patient details</h2>
-							<form action="patient_add.php" method="POST">
-								<label for="name">Name:</label>
-								<input type="text" name="name" required><br><br>
-
-								<label for="email">Email:</label>
-								<input type="email"  name="email" required><br><br>
-
-								<label for="password">Password:</label>
-								<input type="password"  name="password" required><br><br>
-
-								<label for="confirm password">Confirm Password:</label>
-								<input type="password"  name="confirm" required><br><br>
-
-								<label for="Gender">Gender:</label>								
-								<select name="gender">
-									<option value="">Select</option>
-									<option value="male">Male</option>
-									<option value="Female">Female</option>
-								</select>
-								<br><br>
-
-								<label for="contact">Contact:</label>
-								<input type="number" name="contact" required><br><br>
-
-								<label for="Date">Date:</label>
-								<input type="date"  name="dob" required><br><br>
-
-
-								<button type="submit" name="submit" class="button">Submit</button>
-							</form>
-						</div>
-					</div>
-					<!-- off canvas patient add form over -->
-				</div>
-				<!-- patient table start -->
-				<div class="table-container" id="patient-table">
+				
+				<!-- appointment table start -->
+				<div class="table-container" id="appointment-table">
 					<table cellspacing="0" class="table">
 						<tr>							
-							<th class="table-width">Name</th>
+							<th class="table-width">Appointment id</th>
+							<th class="table-width">Patient id</th>
+							<th class="table-width">Patient name</th>
 							<th class="table-width">Gender</th>
-							<th class="table-width">DOB</th>
-							<th class="table-width">Contact</th>
 							<th class="table-width">Email</th>
-							<th class="table-width">Password</th>
-							<th >Action</th>							
+							<th class="table-width">Contact</th>
+							<th class="table-width">Doctor Name</th>
+							<th class="table-width">Appointment Date</th>
+							<th class="table-width">Appointment Time</th>
+							<th class="table-width">Appointment Status</th>
+													
 						<tr>
 							<!-- fetching table rows -->
 						<?php
-							$query = "SELECT *from patient";
+							$query = "SELECT aid,patient_id,patient.name as pname,gender,patient.email,cont,doctor.name as dname,apt_date,apt_time,apt_status from appointment,patient,doctor where patient_id=pid and doctor_id=did";
 							$result = mysqli_query($conn, $query);
 							while ($row = mysqli_fetch_assoc($result)) {
 							 echo "<tr>";
-							 echo "<td class='table-width'>".$row['name']."</td>";
+							 echo "<td class='table-width'>".$row['aid']."</td>";
+							 echo "<td class='table-width'>".$row['patient_id']."</td>";
+							 echo "<td class='table-width'>".$row['pname']."</td>";
 							 echo "<td class='table-width'>".$row['gender']."</td>";
-							 echo "<td class='table-width'>".$row['dob']."</td>";
-							 echo "<td class='table-width'>".$row['cont']."</td>";
 							 echo "<td class='table-width'>".$row['email']."</td>";
-							 echo "<td class='table-width'>".$row['password']."</td>";
-							 echo "<td> <a href='patient_delete.php?id=".$row['pid']."' class='button'>Delete</a></td>";
-							 echo "</tr>";
+							 echo "<td class='table-width'>".$row['cont']."</td>";
+							 echo "<td class='table-width'>".$row['dname']."</td>";
+							 echo "<td class='table-width'>".$row['apt_date']."</td>";
+							 echo "<td class='table-width'>".$row['apt_time']."</td>";
+							 echo "<td class='table-width'>".$row['apt_status']."</td>";
+							 
 							}
 						?>
 					</table>
@@ -444,9 +405,13 @@
 
 				<!-- patient table end -->
 			</div>
-			<div id="prescription" class="content hidden">
+
+			<!-- prescription -->
+			<?php include 'prescription.php'; ?>
+
+			<!-- <div id="prescription" class="content hidden">
 				This is prescripton
-			</div>
+			</div> -->
 
 		</div>
 	</main>

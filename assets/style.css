@@ -52,17 +52,19 @@ body{
 /* //profile dropdown */
 .nav .profile{
     margin-right:10px;
-    position: relative;
+   
    
 }
 .nav .profile-icon{
     cursor:pointer;
+    text-align: right;
 }
 .nav .profile-icon img{
     height:90%;
     width:38px;
     
 }
+
 .nav #dropdown{
     display:none;
     height:100%;
@@ -204,6 +206,7 @@ main .patient-container{
     width:89%;
     border-radius:3px;
     margin-right:5px;
+    height:90%;
     /* box-shadow: -2px 0px 10px rgba(125, 130, 136, 0.52); */
     background:#f1f0f7;
 }

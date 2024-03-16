@@ -3,12 +3,13 @@
     align-items: center;
     flex-direction: column;
 }
-.patient-info{
+.info
+{
     display:flex;
     justify-content: flex-start;
     
 }
-.patient-info .row{
+.info .row{
     margin:10px;
     display:flex;
     flex-direction: column;

@@ -1,0 +1,16 @@
+.info{
+    width:95%;
+    height:90%;
+    margin:10px 10px;
+    background:rgb(254, 254, 255);
+    position:relative;
+    left:20px;
+    border-radius:5px;
+    box-shadow:1px 1px 7.5px 0px gray;
+}
+p{
+    height:50px;
+    font-size:38px;
+    font-weight:bold;
+    margin-left:28px;
+}

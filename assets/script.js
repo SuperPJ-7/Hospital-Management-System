@@ -3,15 +3,18 @@ var previousRole = document.getElementById('role-patient');
 var previousForm = document.getElementById('patient-login');
 
 function showForm(id,currentRole){
-  previousRole.classList.remove('active');
-  currentRole.classList.add('active');
+  if(previousRole!=currentRole){
 
-  var currentForm = document.getElementById(id);
-  currentForm.classList.remove('hidden');
-  previousForm.classList.add('hidden');
-
-  previousRole = currentRole;
-  previousForm = currentForm;
+    previousRole.classList.remove('active');
+    currentRole.classList.add('active');
+  
+    var currentForm = document.getElementById(id);
+    currentForm.classList.remove('hidden');
+    previousForm.classList.add('hidden');
+  
+    previousRole = currentRole;
+    previousForm = currentForm;
+  }
   
 }
 
@@ -62,7 +65,7 @@ function showForm(id,currentRole){
   //admin-links
   var previous_link = document.getElementById('dash');
   var previousContent = document.getElementById('dashboard')
-  
+  var previousHeading = document.getElementById('heading');
   function showcontent(id,currentlink){
     if(previous_link!=currentlink){
       previous_link.classList.remove('active');
@@ -73,11 +76,11 @@ function showForm(id,currentRole){
       //     div.classList.add('hidden');
       //   }
       // )
-    
+      let currentHeading = (id=='dashboard')? id.charAt(0).toUpperCase() + id.slice(1):id.charAt(0).toUpperCase() + id.slice(1)+'s';
       previousContent.classList.add('hidden');
       let selectedContent = document.getElementById(id);
       selectedContent.classList.remove('hidden');
-    
+      previousHeading.textContent=currentHeading;
       
       previous_link = currentlink;
       previousContent = selectedContent;

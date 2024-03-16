@@ -1,7 +1,7 @@
 <?php 
     session_start();
     include ('dbconfig.php');
-    if(!isset($_SESSION['username']) || $_SESSION['userid']!=3){
+    if(!isset($_SESSION['username']) || $_SESSION['userid']!=2){
         header('location:index.php');
         exit;
     }
@@ -15,9 +15,10 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Hospital Management System</title>
 	<link rel="stylesheet" type="text/css" href="assets/style.css">
-	<link rel="stylesheet" type="text/css" href="assets/patient_style.css">
+	<link rel="stylesheet" type="text/css" href="assets/doc_style.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
-
+	
 	<style>
 		body {
 			background: white;
@@ -58,52 +59,21 @@
 		<h2 class="welcome">Welcome <?php echo $_SESSION['username']; ?></h2>
 		<div class="patient-container">
 			<div class="patient-links">
-				<a href="#" onclick="showcontentPatient('profcon',this)" id='prof' class="links active">Profile</a>
-				<a href="#" onclick="showcontentPatient('bk-apt',this)" class="links">Book Appointment</a>
-                <a href="#" onclick="showcontentPatient('up-apt',this)" class="links">Upcoming Appointment</a>
-				<a href="#" onclick="showcontentPatient('his-apt',this)" class="links">Appointment History</a>
+				<a href="#" onclick="showcontentPatient('doc-profcon',this)" id='doc-prof' class="links active">Profile</a>
+				<a href="#" onclick="showcontentPatient('apt',this)" class="links">Appointments</a>
+                
 				<a href="#" onclick="showcontentPatient('pres',this)" class="links">Prescriptions</a>
 				<a href="#"  class="links">Logout</a>
 			</div>
-			<div id="profcon" class="content">
-				<div class="profcon">
-					<div class="photo">
-						<img src="assets/images/user.png" alt="patient img">
-					</div>
-					<div class="info">
-						<div class="row">
-							<div>Name</div>
-							<div>Patient-id</div>
-							<div>Date of Birth</div>
-							<div>Gender</div>
-							<div>Contact</div>
-							<div>Email</div>
-						</div>
-						<div class="row">
-							<?php
-								// if(isset($_GET['id'])){
-									// $pid = $_GET['id'];
-									$pid = $_SESSION['patient-id'];
-									$query = "SELECT *FROM patient WHERE pid=$pid";
-									$result = mysqli_query($conn,$query);
-									$resultData = mysqli_fetch_assoc($result);
-									echo "<div>".$resultData['name']."</div>";
-									echo "<div>".$resultData['pid']."</div>";
-									echo "<div>".$resultData['dob']."</div>";
-									echo "<div>".$resultData['gender']."</div>";
-									echo "<div>".$resultData['cont']."</div>";
-									echo "<div>".$resultData['email']."</div>";
-								// }
-							?>
-							
-						</div>
-					</div>
-				</div>
+			<div id="doc-profcon" class="content">
+				<?php include 'doctor_profile.php'; ?>
 			</div>
 			
+			
 			<!-- booking appointment -->
-			<div id="bk-apt" class="content hidden">
+			<div id="apt" class="content hidden">
 				<div class="appointment-container">
+				
 					<div class="form-container">
 						<div><h3>Create an Appointment</h3></div>
 						<form action="apt_add.php" class="form" id="apt-form" method="POST">
@@ -140,15 +110,8 @@
 				</div>
 			</div>
 
-			<!-- upcoming appointment  -->
-			<div id="up-apt" class="content hidden">
-				
-			</div>
-
-			<!-- appointment history -->
-			<div id="his-apt" class="content hidden">
-				this is apt history
-			</div>
+			
+			
 
 			<!-- prescriptions -->
 			<div id="pres" class="content hidden">
@@ -157,7 +120,7 @@
 
 		</div>
 	</main>
-	<script src="assets/patient_script.js"></script>
+	<script src="assets/doctor_script.js"></script>
 	<script src="assets/script.js"></script>
 
 
