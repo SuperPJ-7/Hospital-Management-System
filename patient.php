@@ -159,6 +159,7 @@
 	</main>
 	<script src="assets/patient_script.js"></script>
 	<script src="assets/script.js"></script>
+	<script src="https://kit.fontawesome.com/a865739a53.js" crossorigin="anonymous"></script>
 
 
 </body>
