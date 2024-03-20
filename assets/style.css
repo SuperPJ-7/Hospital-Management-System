@@ -12,9 +12,12 @@ body{
 
 .nav{
     padding:5px;
+    /* margin:0px 3px; */
     display:flex;
     justify-content: space-between;
     height:40px;
+    /* border-bottom:2px solid white; */
+    
 }
 .nav .logo{
     width:40%;
@@ -129,7 +132,7 @@ body{
 }
 .login-role .toggle-role{
     margin-right:27px;
-    background:#224ea7;
+    background:#1a3161;
     color:white;
     border-radius: 17px;
     font-size:15px;
@@ -247,6 +250,7 @@ main .patient-container{
     padding-left:4px;
     margin-right:5px;
     font-size:20px;
+    box-shadow: -1px 1px 5.5px -0.5px #000;
 }
 /* off canvas styling */
  
@@ -298,6 +302,10 @@ main .patient-container{
     color:white;
     border-radius: 8px;
     cursor:pointer;
+    
+}
+.cancel{
+    background:rgb(180, 5, 5);
 }
 
 /*search form styling*/
@@ -352,7 +360,9 @@ main .patient-container{
 .table a{
     text-decoration: none;
     display:inline-block;
-    height:30px;
+    height:27px;
     width:85px;
     text-align: center;
+    margin-top:3px;
+    padding-top:3px;
 }

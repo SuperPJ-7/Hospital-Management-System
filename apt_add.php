@@ -12,7 +12,7 @@
         $pid = $_SESSION['patient-id'];
         echo "$spec $did $date $time $pid";
         if($spec != '' && $did != '' && $date != '' && $time != ''){
-            $query = "INSERT INTO appointment(patient_id,doctor_id,apt_date,apt_time,apt_status) values('$pid','$did','$date','$time','Scheduled')";
+            $query = "INSERT INTO appointment(patient_id,doctor_id,apt_date,apt_time,apt_status) values('$pid','$did','$date','$time','3')";
             $row = mysqli_query($conn,$query);
             if($row>0){
                 echo "<script>alert('Appointment added succesfully!!!');

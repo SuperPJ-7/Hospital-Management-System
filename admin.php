@@ -123,7 +123,7 @@
 
 					<!-- search using AJAX -->
 					<input type="email" id="doc-email" placeholder="Enter email">
-					<button class="button" id="btn-doc-search">Seach</button>
+					<button class="button" id="btn-doc-search">Search</button>
 
 					<!-- offcanvas doctor add form -->
 					<button id="openFormBtn" class="button" onclick="openForm()">Add Doctor</button>
