@@ -27,7 +27,7 @@ function showcontentPatient(id,currentlink){
 //adding event to select element in appointment booking form
 document.getElementById('spec-select').addEventListener('change',function(event){
   let spec = event.target.value;
-  console.log(spec);
+  // console.log(spec);
    const xhr = new XMLHttpRequest();
    xhr.onload = function(){
     if(xhr.status==200){

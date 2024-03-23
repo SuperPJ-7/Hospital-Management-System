@@ -3,7 +3,7 @@ include ('dbconfig.php');
 if (isset($_GET['id'])) {
     
     $id = $_GET['id'];
-    $query = "DELETE FROM doctor WHERE did=$id";
+    $query = "update doctor set apt_status='0' where $did='$id'";
     $result = mysqli_query($conn, $query);
     if ($result > 0) {
         echo "<script>

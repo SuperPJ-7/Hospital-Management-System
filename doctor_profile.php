@@ -45,7 +45,7 @@
             </div>
             <div>
                 <span>Status</span>
-                <span><?php echo $data['status']; ?></span>
+                <span><?php echo ($data['status']==1)?'Active':'Inactive'; ?></span>
             </div>
         </div>
     

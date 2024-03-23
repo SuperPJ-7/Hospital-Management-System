@@ -59,10 +59,10 @@
 		<h2 class="welcome">Welcome <?php echo $_SESSION['username']; ?></h2>
 		<div class="patient-container">
 			<div class="patient-links">
-				<a href="#" onclick="showcontentPatient('doc-profcon',this)" id='doc-prof' class="links active">Profile</a>
-				<a href="#" onclick="showcontentPatient('apt',this)" class="links">Appointments</a>
+				<a href="#" onclick="showcontentDoctor('doc-profcon',this)" id='doc-prof' class="links active">Profile</a>
+				<a href="#" onclick="showcontentDoctor('apt',this)" class="links">Appointments</a>
                 
-				<a href="#" onclick="showcontentPatient('pres',this)" class="links">Prescriptions</a>
+				<a href="#" onclick="showcontentDoctor('pres',this)" class="links">Prescriptions</a>
 				<a href="#"  class="links">Logout</a>
 			</div>
 			<div id="doc-profcon" class="content">
@@ -72,7 +72,7 @@
 			
 			<!--appointment list -->
 			<div id="apt" class="content hidden">
-				<?php include('apt_list.php'); ?>
+				<?php include('doc_apt_list.php'); ?>
 			</div>
 			
 
@@ -81,7 +81,7 @@
 
 			<!-- prescriptions -->
 			<div id="pres" class="content hidden">
-				this is prescsriptions
+				<?php include('doc_prescription.php'); ?>
 			</div>
 
 		</div>

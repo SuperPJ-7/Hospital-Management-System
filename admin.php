@@ -367,8 +367,8 @@
 				<div class="table-container" id="appointment-table">
 					<table cellspacing="0" class="table">
 						<tr>							
-							<th class="table-width">Appointment id</th>
-							<th class="table-width">Patient id</th>
+							<th class="table-width num">Appointment id</th>
+							<th class="table-width num">Patient id</th>
 							<th class="table-width">Patient name</th>
 							<th class="table-width">Gender</th>
 							<th class="table-width">Email</th>
@@ -376,7 +376,7 @@
 							<th class="table-width">Doctor Name</th>
 							<th class="table-width">Appointment Date</th>
 							<th class="table-width">Appointment Time</th>
-							<th class="table-width">Appointment Status</th>
+							<th class="">Appointment Status</th>
 													
 						<tr>
 							<!-- fetching table rows -->
@@ -385,8 +385,8 @@
 							$result = mysqli_query($conn, $query);
 							while ($row = mysqli_fetch_assoc($result)) {
 							 echo "<tr>";
-							 echo "<td class='table-width'>".$row['aid']."</td>";
-							 echo "<td class='table-width'>".$row['patient_id']."</td>";
+							 echo "<td class='table-width num'>".$row['aid']."</td>";
+							 echo "<td class='table-width num'>".$row['patient_id']."</td>";
 							 echo "<td class='table-width'>".$row['pname']."</td>";
 							 echo "<td class='table-width'>".$row['gender']."</td>";
 							 echo "<td class='table-width'>".$row['email']."</td>";
@@ -394,7 +394,7 @@
 							 echo "<td class='table-width'>".$row['dname']."</td>";
 							 echo "<td class='table-width'>".$row['apt_date']."</td>";
 							 echo "<td class='table-width'>".$row['apt_time']."</td>";
-							 echo "<td class='table-width'>".$row['apt_status']."</td>";
+							 echo "<td class=''>".$row['apt_status']."</td>";
 							 
 							}
 						?>

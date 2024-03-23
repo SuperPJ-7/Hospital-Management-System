@@ -15,7 +15,7 @@ body{
     /* margin:0px 3px; */
     display:flex;
     justify-content: space-between;
-    height:40px;
+    height:45px;
     /* border-bottom:2px solid white; */
     
 }
@@ -25,6 +25,7 @@ body{
     justify-content: center;
     color:white;
     font:bold;
+    align-items:center;
 }
 
 .nav .nav-links{
@@ -32,6 +33,7 @@ body{
     margin-right:20px;
     display:flex;
     justify-content: flex-end;
+    align-items: center;
 }
 .nav-links ul{
     display:flex;
@@ -63,8 +65,7 @@ body{
     text-align: right;
 }
 .nav .profile-icon img{
-    height:90%;
-    width:38px;
+    width:43px;
     
 }
 
@@ -172,6 +173,11 @@ body{
     height:3rem;   
     padding:0px 5px 0px 5px;
     font-size:1.2rem;
+}
+input:focus,
+select:focus,
+texarea:focus{
+    outline: 2px solid #0250f8;
 }
 .form-container .btn-submit{
     background:#1f4aa5;
@@ -332,7 +338,7 @@ main .patient-container{
     margin:20px;
     display:flex;
     justify-content: flex-start;
-    max-width:100%;
+    /* max-width:100%; */
     font-size:15px;
 }
 .table{
@@ -352,10 +358,15 @@ main .patient-container{
     text-align:left;
     overflow:hidden;
     padding-top:10px;
+    
 }
 .table-width{
-    width:300px;
-    padding-right:5px;
+    word-wrap:break-word;
+    max-width:300px;
+    padding:5px;
+}
+.table .num{
+    width:99px;
 }
 .table a{
     text-decoration: none;

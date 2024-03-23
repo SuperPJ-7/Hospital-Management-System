@@ -12,7 +12,7 @@ if(isset($_POST['submit'])){
     $email = $_POST['email'];
     $password = $_POST['password'];
     if($email != '' && $password != ''){
-        $query = "SELECT *FROM doctor WHERE email='$email' and password='$password'";
+        $query = "SELECT *FROM doctor WHERE email='$email' and password='$password' and status='1'";
         $result = mysqli_query($conn,$query);
         $row = mysqli_num_rows($result);
         $resultdata = mysqli_fetch_assoc($result);
