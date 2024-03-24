@@ -4,7 +4,7 @@ include 'dbconfig.php';
 <div class="search">
 
 <input type="number" id="pres-search" class="input" min="1" placeholder="Enter patient-id">
-<button class="button" id="btn-pres-search">Search</button>
+<button class="button" onclick="prescriptionSearch()">Search</button>
 </div>
 			
 <!-- prescription table start -->

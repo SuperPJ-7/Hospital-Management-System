@@ -81,4 +81,4 @@
 			}
 			?>
 	</table>
-	<script src = "doctor_script.js"></script>
+	
