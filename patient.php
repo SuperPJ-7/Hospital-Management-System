@@ -16,6 +16,7 @@
 	<title>Hospital Management System</title>
 	<link rel="stylesheet" type="text/css" href="assets/style.css">
 	<link rel="stylesheet" type="text/css" href="assets/patient_style.css">
+	<link rel="stylesheet" type="text/css" href="assets/patient_profile.css">
 	<link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
 
 	<style>
@@ -66,39 +67,7 @@
 				<a href="#"  class="links">Logout</a>
 			</div>
 			<div id="profcon" class="content">
-				<div class="profcon">
-					<div class="photo">
-						<img src="assets/images/user.png" alt="patient img">
-					</div>
-					<div class="info">
-						<div class="row">
-							<div>Name</div>
-							<div>Patient-id</div>
-							<div>Date of Birth</div>
-							<div>Gender</div>
-							<div>Contact</div>
-							<div>Email</div>
-						</div>
-						<div class="row">
-							<?php
-								// if(isset($_GET['id'])){
-									// $pid = $_GET['id'];
-									$pid = $_SESSION['patient-id'];
-									$query = "SELECT *FROM patient WHERE pid=$pid";
-									$result = mysqli_query($conn,$query);
-									$resultData = mysqli_fetch_assoc($result);
-									echo "<div>".$resultData['name']."</div>";
-									echo "<div>".$resultData['pid']."</div>";
-									echo "<div>".$resultData['dob']."</div>";
-									echo "<div>".$resultData['gender']."</div>";
-									echo "<div>".$resultData['cont']."</div>";
-									echo "<div>".$resultData['email']."</div>";
-								// }
-							?>
-							
-						</div>
-					</div>
-				</div>
+				<?php include ('patient_profile.php'); ?>
 			</div>
 			
 			<!-- booking appointment -->
@@ -157,6 +126,8 @@
 
 		</div>
 	</main>
+	
+	</script>
 	<script src="assets/patient_script.js"></script>
 	<script src="assets/script.js"></script>
 	<script src="https://kit.fontawesome.com/a865739a53.js" crossorigin="anonymous"></script>
