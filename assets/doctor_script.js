@@ -7,7 +7,6 @@ disableBtn.forEach(
   }
 );
 function disableB(){
-  console.log('disable called');
   let disableButtons = document.querySelectorAll('.disableBtn');
   disableButtons.forEach(
   function(btn){
@@ -42,6 +41,20 @@ function showcontentDoctor(id,currentlink){
   }
   
 }
+
+//filter appointment
+document.getElementById('doc-apt-status').addEventListener('change',function(event){
+  let status = event.target.value;
+  let xhr = new XMLHttpRequest();
+  xhr.open("POST","http://localhost/myhms/doc_apt_search.php",true);
+  xhr.onload = function(){
+    if(xhr.status == 200)
+    document.getElementById('doc-apt-table').innerHTML = xhr.responseText;
+  disableB();
+  }
+  xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+  xhr.send("status="+status);
+})
 
 
 //appointment search ajax

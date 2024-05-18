@@ -61,8 +61,8 @@
 			<div class="patient-links">
 				<a href="#" onclick="showcontentPatient('profcon',this)" id='prof' class="links active">Profile</a>
 				<a href="#" onclick="showcontentPatient('bk-apt',this)" class="links">Book Appointment</a>
-                <a href="#" onclick="showcontentPatient('up-apt',this)" class="links">Upcoming Appointment</a>
-				<a href="#" onclick="showcontentPatient('his-apt',this)" class="links">Appointment History</a>
+                <a href="#" onclick="showcontentPatient('up-apt',this)" class="links">Appointments</a>
+				
 				<a href="#" onclick="showcontentPatient('pres',this)" class="links">Prescriptions</a>
 				<a href="#"  class="links">Logout</a>
 			</div>
@@ -111,17 +111,14 @@
 
 			<!-- upcoming appointment  -->
 			<div id="up-apt" class="content hidden">
-				
+				<?php include ("patient/apt_list.php"); ?>
 			</div>
 
-			<!-- appointment history -->
-			<div id="his-apt" class="content hidden">
-				this is apt history
-			</div>
+			
 
 			<!-- prescriptions -->
 			<div id="pres" class="content hidden">
-				this is prescsriptions
+				<?php include("patient/prescriptions.php"); ?>
 			</div>
 
 		</div>
@@ -129,6 +126,7 @@
 	
 	</script>
 	<script src="assets/patient_script.js"></script>
+	<script src="assets/patient/apt_search.js"></script>
 	<script src="assets/script.js"></script>
 	<script src="https://kit.fontawesome.com/a865739a53.js" crossorigin="anonymous"></script>
 

@@ -44,3 +44,32 @@
     width:215px;
     display: inline-block;
 }
+.disabled{
+    background:gray;
+    cursor:not-allowed;
+    height: 30px ;
+    width: 85px;
+    
+}
+/* filter search */
+.filter select{
+    background:white;
+}
+.abovelist {
+    display:flex;
+    justify-content: space-between;
+    padding:10px 5px 0px 5px;
+}
+.filter select{
+    height:45px;
+    width:137px;
+    margin-left:5px;
+}
+
+.apt-search input{
+    width:350px;
+    height:45px;
+    border-radius:5px;
+    font-size:1.15rem;
+    margin-right:10px;
+}

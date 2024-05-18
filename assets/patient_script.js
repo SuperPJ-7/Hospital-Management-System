@@ -1,3 +1,12 @@
+//disabling the buttons
+// let disableBtn = document.querySelectorAll('.disableBtn');
+// disableBtn.forEach(
+//   function(btn){
+//     btn.disabled = true;
+//     btn.classList.add('disabled')
+//   }
+// );
+
 //patient-links
 var prev_link = document.getElementById('prof');
 var prevContent = document.getElementById('profcon')
@@ -39,3 +48,4 @@ document.getElementById('spec-select').addEventListener('change',function(event)
    xhr.setRequestHeader('Content-type',"application/x-www-form-urlencoded");
    xhr.send("spec="+spec);
 })
+

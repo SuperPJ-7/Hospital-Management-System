@@ -1,7 +1,6 @@
 <?php
-
-	include 'dbconfig.php';
 	session_start();
+	include 'dbconfig.php';	
 ?>
 <table cellspacing="0" class="table">
 		<tr>
