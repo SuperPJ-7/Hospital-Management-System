@@ -1,6 +1,6 @@
 <?php
 	session_start();
-	include 'dbconfig.php';	
+	include 'dbconfig.php'; 	
 ?>
 <table cellspacing="0" class="table">
 		<tr>
@@ -20,8 +20,42 @@
 			<!-- fetching table rows -->
 			<?php
 			$did = $_SESSION['doctor-id'];
-            $aid = $_POST['aid'];
-			$query = "select patient_id as id,patient.name as pname,patient.gender,patient.email,patient.cont,apt_date,apt_time,apt_status from appointment,doctor,patient where aid = '$aid' and patient_id=pid and doctor_id=did and doctor_id='$did'";
+            @$aid = $_POST['aid'];
+			@$aid = $_POST['aid'];
+			if(!isset($_SESSION['fq'])){
+				$filterQuery = '';
+			}
+			else{
+				$filterQuery = $_SESSION['fq'];
+			}
+			if(isset($_POST['status'])){
+				$status = $_POST['status'];
+				switch($status){
+					case 'all':
+						$filterQuery = '';
+						break;
+					case 'scheduled':
+						$filterQuery = " and apt_status='0'";
+						break;
+					case 'pending':
+						$filterQuery = " and apt_status='3'";
+						break;
+					case 'completed':
+						$filterQuery = " and apt_status='4'";
+						break;
+					case 'cancelled':
+						$filterQuery = " and (apt_status='2' or apt_status='1')";
+						break;
+				}
+			}
+
+
+
+			$query = "select aid,patient_id as id,patient.name as pname,patient.gender,patient.email,patient.cont,apt_date,apt_time,apt_status from appointment,doctor,patient where aid = '$aid' and patient_id=pid and doctor_id=did and doctor_id='$did'".$filterQuery." order by aid";
+			if($aid==''){
+				$query = "select aid,patient_id as id,patient.name as pname,patient.gender,patient.email,patient.cont,apt_date,apt_time,apt_status from appointment,doctor,patient where patient_id=pid and doctor_id=did and doctor_id='$did'".$filterQuery." order by aid";
+			}
+			@$_SESSION['fq'] = $filterQuery;
 			$result = mysqli_query($conn, $query);
 
 			while ($row = mysqli_fetch_assoc($result)) {
@@ -45,7 +79,7 @@
 						$status = 'No info';
 				}
 				echo "<tr>";
-				echo "<td class='table-width num'>" . $aid . "</td>";
+				echo "<td class='table-width num'>" . $row['aid'] . "</td>";
 				echo "<td class='table-width num'>" . $row['id'] . "</td>";
 				echo "<td class='table-width'>" . $row['pname'] . "</td>";
 				echo "<td class='table-width'>" . $row['gender'] . "</td>";

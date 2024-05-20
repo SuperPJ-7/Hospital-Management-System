@@ -18,9 +18,13 @@ session_start();
         <!-- fetching table rows -->
         <?php
         $did = $_SESSION['doctor-id'];
-        $pid = $_POST['pid'];
+        @$pid = $_POST['pid'];
         $query = "select pres_id,patient_id,patient.name as pname,medication,dosage,frequency,date,diagnosis from prescription,patient WHERE
         patient_id=pid and patient_id='$pid' and doctor_id='$did';";
+        if($pid==''){
+            $query = "select pres_id,patient_id,patient.name as pname,medication,dosage,frequency,date,diagnosis from prescription,patient WHERE
+            patient_id=pid and doctor_id='$did'";
+        }
         $result = mysqli_query($conn, $query);
         while ($row = mysqli_fetch_assoc($result)) {
             echo "<tr>";

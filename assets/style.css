@@ -315,19 +315,40 @@ main .patient-container{
 }
 
 /*search form styling*/
+.abovelist {
+    display:flex;
+    justify-content: space-between;
+    padding:10px 5px 0px 5px;
+}
+.filter select{
+    background:white;
+    padding:0px 5px 0px 5px;
+    height:45px;
+    width:137px;
+    margin-left:5px;
+    border-radius:8px;
+    font-size:1.1rem;
+}
 
+.apt-search input{
+    width:350px;
+    height:45px;
+    border-radius:5px;
+    font-size:1.15rem;
+    margin-right:10px;
+    padding:0px 5px 0px 5px;
+}
 .search {
     display:flex;
-    justify-content: flex-start;
-    padding-top:20px;
-    
-    gap:3rem;
+    justify-content: flex-end;
+    padding-top:20px;    
+    gap:1rem;
 }
-.search input{
-    margin-left:30px;
+.search{
+    margin-right:30px;
 }
 
-.search input,select{
+.search input{
     width:350px;
     height:45px;
     border-radius:5px;
@@ -364,9 +385,10 @@ main .patient-container{
     word-wrap:break-word;
     max-width:300px;
     padding:5px;
+    width:155px;
 }
 .table .num{
-    width:99px;
+    width:90px;
 }
 .table a{
     text-decoration: none;

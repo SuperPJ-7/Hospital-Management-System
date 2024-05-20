@@ -101,15 +101,15 @@ textarea{
 
 
 /* filter search */
-.filter select{
-    background:white;
-}
+
 .abovelist {
     display:flex;
     justify-content: space-between;
     padding:10px 5px 0px 5px;
 }
 .filter select{
+    background:white;
+    padding:0px 5px 0px 5px;
     height:45px;
     width:137px;
     margin-left:5px;
@@ -121,4 +121,5 @@ textarea{
     border-radius:5px;
     font-size:1.15rem;
     margin-right:10px;
+    padding:0px 5px 0px 5px;
 }

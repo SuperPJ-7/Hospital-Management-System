@@ -45,6 +45,7 @@ function showcontentDoctor(id,currentlink){
 //filter appointment
 document.getElementById('doc-apt-status').addEventListener('change',function(event){
   let status = event.target.value;
+  console.log(event.target.value);
   let xhr = new XMLHttpRequest();
   xhr.open("POST","http://localhost/myhms/doc_apt_search.php",true);
   xhr.onload = function(){
@@ -62,7 +63,7 @@ document.getElementById('doc-apt-status').addEventListener('change',function(eve
 function aptSearch(){
   let apt_id = document.getElementById('apt-id').value.trim();
   // console.log(isNaN(apt_id))
-  if(apt_id<=0 || isNaN(apt_id) || apt_id==''){
+  if((apt_id<=0 || isNaN(apt_id)) && apt_id!=''){
     
     document.getElementById('apt-id').value = '';
     
@@ -91,7 +92,7 @@ function aptSearch(){
 function prescriptionSearch(){
   let patient_id = document.getElementById('pres-search').value.trim();
   console.log(isNaN(patient_id))
-  if(patient_id<=0 || isNaN(patient_id) || patient_id==''){
+  if((patient_id<=0 || isNaN(patient_id)) && patient_id!=''){
     
     document.getElementById('pres-search').value = '';
     

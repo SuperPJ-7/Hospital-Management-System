@@ -49,3 +49,17 @@ create table appointment(
     FOREIGN KEY(doctor_id) REFERENCES doctor(did)
 
 );
+
+--prescription feedback table
+create table prescriptionFeedback(
+fid int AUTO_INCREMENT primary key,
+    pid int NOT NULL,
+    patient_id int not null,
+    doctor_id int not null,
+    txt TEXT not null,
+    date DATETIME not null,
+    foreign key (pid) REFERENCES prescription(pres_id),
+    foreign key (patient_id) REFERENCES patient(pid),
+    foreign key (doctor_id) REFERENCES doctor(did)
+    
+);

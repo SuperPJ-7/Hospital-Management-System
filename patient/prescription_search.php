@@ -1,15 +1,9 @@
 <?php
-require_once './dbconfig.php';
+    session_start();
+    include ('../dbconfig.php');
 ?>
-<div class="search">
 
-<input type="text" id="pres-search" class="input" min="1" placeholder="Enter prescription id">
-<button class="button" onclick="presSearch()">Search</button>
-</div>
-			
-<!-- prescription table start -->
-<div class="table-container" id="prescription-table">
-    <table cellspacing="0" class="table">
+<table cellspacing="0" class="table">
         <tr>							
             <th class="table-width num">Prescription id</th>
             <th class="table-width num">Doctor id</th>
@@ -23,8 +17,14 @@ require_once './dbconfig.php';
         <tr>
             <!-- fetching table rows -->
         <?php
+            if(isset($_POST['pres-id'])){
+                $pres_id = $_POST['pres-id'];
+            }
             $pid = $_SESSION['patient-id'];
             $query = "SELECT pres_id,doctor_id,doctor.name as dname,diagnosis,medication,dosage,frequency,date from prescription,doctor where doctor_id=did and patient_id='$pid'";
+            if($pres_id!=''){
+                $query = "SELECT pres_id,doctor_id,doctor.name as dname,diagnosis,medication,dosage,frequency,date from prescription,doctor where doctor_id=did and patient_id='$pid' and pres_id='$pres_id'";
+            }
             $result = mysqli_query($conn, $query);
             while ($row = mysqli_fetch_assoc($result)) {
             $pres_id = $row['pres_id'];
@@ -56,13 +56,3 @@ require_once './dbconfig.php';
             }
         ?>
     </table>
-    <!-- finished fetching table rows -->
-    
-</div>
-
-<!-- prescription table end -->
-<!-- delete prescription -->
-
-
-
-
