@@ -159,6 +159,9 @@
 								<label for="contact">Contact:</label>
 								<input type="number" id="contact" name="contact" required><br><br>
 
+								<label for="address">Address</label>
+								<input type="text" id="address" name="address" required><br><br>
+
 								<label for="license">License Number:</label>
 								<input type="text" id="license" name="license" required><br><br>
 
@@ -224,6 +227,16 @@
 								<label for="name">Name:</label>
 								<input type="text" id="nurse-name" name="name" required><br><br>
 
+								<label for="dob">Date of Birth:</label>
+								<input type="date" id="nurse-dob" name="dob" required><br><br>
+
+								<label for="gender">Gender:</label>
+								<select name="gender">
+									<option value="">Select Gender</option>
+									<option value="male">Male</option>
+									<option value="female">Female</option>
+								</select><br><br>
+
 								<label for="email">Email:</label>
 								<input type="email" id="nurse-email" name="email" required><br><br>
 
@@ -248,6 +261,8 @@
 						<tr>							
 							<th class="table-width">Name</th>							
 							<th class="table-width">Contact</th>
+							<th class="table-width">Date of Birth</th>
+							<th class="table-width">Gender</th>
 							<th class="table-width">Email</th>
 							
 							
@@ -261,6 +276,8 @@
 							 echo "<tr>";
 							 echo "<td class='table-width'>".$row['name']."</td>";
 							 echo "<td class='table-width'>".$row['contact']."</td>";
+							 echo "<td class='table-width'>".$row['dob']."</td>";
+							 echo "<td class='table-width'>".$row['gender']."</td>";
 							 echo "<td class='table-width'>".$row['email']."</td>";
 							 echo "<td> <a href='nurse_delete.php?id=".$row['nid']."' class='button'>Delete</a></td>";
 							 echo "</tr>";
@@ -436,7 +453,21 @@
 		</div>
 	</main>
 	<script src="assets/script.js"></script>
+	<script>
+		// script.js
+document.getElementById('togglePassword').addEventListener('click', function () {
+    const password = document.getElementById('password');
+    const eyeIcon = document.getElementById('eyeIcon');
 
+    // Toggle the type attribute
+    const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+    password.setAttribute('type', type);
+
+    // Toggle the eye slash icon
+    eyeIcon.classList.toggle('fa-eye-slash');
+});
+
+		</script>
 
 </body>
 

@@ -7,9 +7,10 @@ if (isset($_POST['submit'])) {
     $confirm = $_POST['confirm'];
     $spec = $_POST['specialization'];
     $contact = $_POST['contact'];
+    $address = $_POST['address'];
     $license = $_POST['license'];
     //echo $name . '' . $email . '' . $password . '' . $confirm . '' . $spec . '' . $contact . '' . $license . '';
-    if ($name != '' && $email != '' && $password != '' && $confirm != '' && $spec != '' && $contact != '' && $license != '') {
+    if ($name != '' && $email != '' && $password != '' && $confirm != '' && $spec != '' && $contact != '' && $address!='' && $license != '') {
         if ($password != $confirm) {
             echo "<script>
                     alert('both passwords must match');
@@ -17,7 +18,7 @@ if (isset($_POST['submit'])) {
                 </script>";
         } else {
             try{
-            $docadd_query = "INSERT INTO doctor(name,spec,contact,email,lic,password) VALUES('$name','$spec','$contact','$email','$license','$password')";
+            $docadd_query = "INSERT INTO doctor(name,spec,contact,email,lic,password,address) VALUES('$name','$spec','$contact','$email','$license','$password','$address')";
             $rows = mysqli_query($conn, $docadd_query);
                 if ($rows > 0) {
                     echo "<script>

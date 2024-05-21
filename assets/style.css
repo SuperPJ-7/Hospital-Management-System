@@ -348,7 +348,7 @@ main .patient-container{
     margin-right:30px;
 }
 
-.search input{
+.search input,select{
     width:350px;
     height:45px;
     border-radius:5px;
@@ -383,9 +383,9 @@ main .patient-container{
 }
 .table-width{
     word-wrap:break-word;
-    max-width:300px;
+    max-width:385px;
     padding:5px;
-    width:155px;
+    width:385px;
 }
 .table .num{
     width:90px;

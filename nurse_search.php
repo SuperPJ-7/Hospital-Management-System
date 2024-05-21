@@ -6,6 +6,8 @@ include('dbconfig.php');
     <tr>
         <th class="table-width">Name</th>
         <th class="table-width">Contact</th>
+        <th class="table-width">Date of Birth</th>
+		<th class="table-width">Gender</th>
         <th class="table-width">Email</th>
         <th>Action</th>
     <tr>
@@ -18,6 +20,8 @@ include('dbconfig.php');
             echo "<tr>";
             echo "<td class='table-width'>" . $row['name'] . "</td>";
             echo "<td class='table-width'>" . $row['contact'] . "</td>";
+            echo "<td class='table-width'>".$row['dob']."</td>";
+			echo "<td class='table-width'>".$row['gender']."</td>";
             echo "<td class='table-width'>" . $row['email'] . "</td>";
             echo "<td> <a href='doc_delete.php?id=" . $row['nid'] . "' class='button'>Delete</a></td>";
             echo "</tr>";
