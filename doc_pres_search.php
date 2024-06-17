@@ -8,12 +8,12 @@ session_start();
         <th class="table-width num">Prescription id</th>
         <th class="table-width num">Patient id</th>
         <th class="table-width">Patient name</th>
-        <th class="table-width num">Doctor id</th>
-        <th class="table-width">Doctor name</th>
+        <th class="table-width">Diagnosis</th>
         <th class="table-width">Medication</th>
         <th class="table-width">Dosage</th>
         <th class="table-width">Frequeny</th>
-        <th class="">Date</th>
+        <th class="table-width">Date</th>
+        <th>Action</th>
     <tr>
         <!-- fetching table rows -->
         <?php

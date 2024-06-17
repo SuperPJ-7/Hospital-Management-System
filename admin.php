@@ -31,6 +31,40 @@
 		.ad-main {
 			margin: 0px;
 		}
+		.progress-bar {
+            background-color: #007bff;
+        }
+       
+        .containerDoc {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .doctor {
+            border: 1px solid #ccc;
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .doctor .name {
+            font-size: 1.2em;
+            margin-bottom: 5px;
+        }
+        .doctor .appointments {
+            font-size: 0.9em;
+            margin-bottom: 10px;
+        }
+        .progress-bar {
+            background-color: #007bff;
+            height: 20px;
+            border-radius: 5px;
+        }
+        .progress {
+            background-color: #e9ecef;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+    
 	</style>
 </head>
 
@@ -48,7 +82,7 @@
 				</div>
 				<div id="dropdown">
 					<div class="logout-container">
-					<a href="logout.php">Log out</a>
+					<a onclick="logout()">Log out</a>
 					</div>
 				</div>
 			</div>
@@ -64,16 +98,16 @@
 				<a href="#" onclick="showcontent('patient',this)" class="links">Patients</a>
 				<a href="#" onclick="showcontent('appointment',this)" class="links">Appointments</a>
 				<a href="#" onclick="showcontent('prescription',this)" class="links">Prescription</a>
-				<a href="#"  class="links">Logout</a>
+				<a href="#" onclick="logout()" class="links">Logout</a>
 
 			</div>
 			<div id="dashboard" class="dash content">
-				Overview
+				
 				<div class="overview">
 					<div class="box">
 						<div class="box-left">
 							<span><?php 
-									$query = "SELECT * FROM doctor";
+									$query = "SELECT * FROM doctor where status='1'";
 									$result = mysqli_query($conn, $query);
 									$rows = mysqli_num_rows($result);
 									echo $rows;								
@@ -114,7 +148,8 @@
 					</div>
 				</div>
 				<div class="pop-doctor">
-					This is popular doctor list
+				
+					<?php include 'popularDoctors.php'; ?>
 				</div>
 			</div>
 			<div id="doctor" class="content hidden">
@@ -132,12 +167,12 @@
 						<div id="sideForm">
 							<span class="closeBtn" onclick="closeForm()">×</span>
 							<h2>Enter doctor details</h2>
-							<form action="doctor_add.php" method="POST">
+							<form action="doctor_add.php" method="POST" onsubmit="return validate('doc-add-email')">
 								<label for="name">Name:</label>
 								<input type="text" id="name" name="name" required><br><br>
 
 								<label for="email">Email:</label>
-								<input type="email" id="email" name="email" required><br><br>
+								<input type="email" id="doc-add-email" name="email" required><br><br>
 
 								<label for="password">Password:</label>
 								<input type="password" id="password" name="password" required><br><br>
@@ -186,7 +221,7 @@
 						<tr>
 							<!-- fetching table rows -->
 						<?php
-							$query = "SELECT *from doctor";
+							$query = "SELECT *from doctor where status='1'";
 							$result = mysqli_query($conn, $query);
 							while ($row = mysqli_fetch_assoc($result)) {
 							 echo "<tr>";
@@ -196,7 +231,7 @@
 							 echo "<td class='table-width'>".$row['email']."</td>";
 							 echo "<td class='table-width'>".$row['password']."</td>";
 							 echo "<td class='table-width'>".$row['lic']."</td>";
-							 echo "<td> <a href='doc_delete.php?id=".$row['did']."' class='button'>Delete</a></td>";
+							 echo "<td> <a href='doc_delete.php?id=".$row['did']."' class='button cancel'>Delete</a></td>";
 							 echo "</tr>";
 							}
 						?>
@@ -223,7 +258,7 @@
 						<div id="sideForm2">
 							<span class="closeBtn" onclick="closeForm2()">×</span>
 							<h2>Enter Nurse details</h2>
-							<form action="nurse_add.php" method="POST">
+							<form action="nurse_add.php" method="POST" onsubmit="return validate('add-nurse-email')">
 								<label for="name">Name:</label>
 								<input type="text" id="nurse-name" name="name" required><br><br>
 
@@ -238,7 +273,7 @@
 								</select><br><br>
 
 								<label for="email">Email:</label>
-								<input type="email" id="nurse-email" name="email" required><br><br>
+								<input type="email" id="add-nurse-email" name="email" required><br><br>
 
 								<!-- <label for="password">Password:</label>
 								<input type="password" id="password" name="password" required><br><br>
@@ -279,7 +314,7 @@
 							 echo "<td class='table-width'>".$row['dob']."</td>";
 							 echo "<td class='table-width'>".$row['gender']."</td>";
 							 echo "<td class='table-width'>".$row['email']."</td>";
-							 echo "<td> <a href='nurse_delete.php?id=".$row['nid']."' class='button'>Delete</a></td>";
+							 echo "<td> <a href='nurse_delete.php?id=".$row['nid']."' class='button cancel'>Delete</a></td>";
 							 echo "</tr>";
 							}	
 						?>
@@ -297,7 +332,7 @@
 					
 					<!-- search using AJAX -->
 					<input type="email" id="patient-email" placeholder="Enter email">
-					<button class="button" id="btn-pat-search">Seach</button>
+					<button class="button" id="btn-pat-search">Search</button>
 
 					<!-- offcanvas patient add form -->
 					<button id="openFormBtnPat" class="button" onclick="openFormPat()">Add Patient</button>
@@ -306,12 +341,12 @@
 						<div id="sideFormPat">
 							<span class="closeBtn" onclick="closeFormPat()">×</span>
 							<h2>Enter Patient details</h2>
-							<form action="patient_add.php" method="POST">
+							<form action="patient_add.php" method="POST" onsubmit="return validate('pat-add-email')">
 								<label for="name">Name:</label>
 								<input type="text" name="name" required><br><br>
 
 								<label for="email">Email:</label>
-								<input type="email"  name="email" required><br><br>
+								<input type="email" id='pat-add-email' name="email" required><br><br>
 
 								<label for="password">Password:</label>
 								<input type="password"  name="password" required><br><br>
@@ -328,7 +363,7 @@
 								<br><br>
 
 								<label for="contact">Contact:</label>
-								<input type="number" name="contact" required><br><br>
+								<input type="text" name="contact" required><br><br>
 
 								<label for="Date">Date:</label>
 								<input type="date"  name="dob" required><br><br>
@@ -354,7 +389,7 @@
 						<tr>
 							<!-- fetching table rows -->
 						<?php
-							$query = "SELECT *from patient";
+							$query = "SELECT *from patient where is_deleted=FALSE";
 							$result = mysqli_query($conn, $query);
 							while ($row = mysqli_fetch_assoc($result)) {
 							 echo "<tr>";
@@ -364,7 +399,7 @@
 							 echo "<td class='table-width'>".$row['cont']."</td>";
 							 echo "<td class='table-width'>".$row['email']."</td>";
 							 echo "<td class='table-width'>".$row['password']."</td>";
-							 echo "<td> <a href='patient_delete.php?id=".$row['pid']."' class='button'>Delete</a></td>";
+							 echo "<td> <a href='patient_delete.php?id=".$row['pid']."' class='button cancel'>Delete</a></td>";
 							 echo "</tr>";
 							}
 						?>
@@ -378,7 +413,24 @@
 
 			<!-- appointment -->
 			<div id="appointment" class="content hidden">
-			
+				<div class="abovelist">
+
+					<div class="filter">
+						<select id="apt-status">
+							<option value="all">All</option>
+							<option value="scheduled">Scheduled</option>
+							<option value="pending">Pending</option>
+							<option value="completed">Completed</option>
+							<option value="cancelled">Cancelled</option>
+						</select>
+					</div>
+					<div class="apt-search">
+
+						<input type="text" id="apt-id" class="input" placeholder="Enter appointment-id">
+						<button class="button" onclick="aptSearch()">Search</button>
+					</div>
+
+				</div>
 				
 				<!-- appointment table start -->
 				<div class="table-container" id="appointment-table">
@@ -418,6 +470,9 @@
 									case 4:
 										$status = 'Completed';
 										break;
+									case 5:
+										$status = 'No-show';
+										break;
 									default:
 										$status = 'No info';
 								}
@@ -453,22 +508,7 @@
 		</div>
 	</main>
 	<script src="assets/script.js"></script>
-	<script>
-		// script.js
-document.getElementById('togglePassword').addEventListener('click', function () {
-    const password = document.getElementById('password');
-    const eyeIcon = document.getElementById('eyeIcon');
-
-    // Toggle the type attribute
-    const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
-    password.setAttribute('type', type);
-
-    // Toggle the eye slash icon
-    eyeIcon.classList.toggle('fa-eye-slash');
-});
-
-		</script>
-
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
 </body>
 
 </html>

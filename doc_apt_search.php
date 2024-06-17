@@ -46,6 +46,8 @@
 					case 'cancelled':
 						$filterQuery = " and (apt_status='2' or apt_status='1')";
 						break;
+					case 'no-show':
+						$filterQuery = " and apt_status='5'";
 				}
 			}
 
@@ -75,7 +77,10 @@
 					case 4:
 						$status = 'Completed';
 						break;
-					default:
+					case 5:
+						$status = 'No-show';
+						break;
+						default:
 						$status = 'No info';
 				}
 				echo "<tr>";
@@ -92,8 +97,28 @@
 
 					echo "<td class='table-width'> <a href='apt-confirm.php?id=" . $aid. "' class='button'>Confirm</a>
                 <a href='apt-cancel.php?id=" . $aid . "' class='button cancel'>Cancel</a></td>";
-                                 
-				} else {
+                               
+				}
+				//start
+				else if($status == 'Scheduled'){
+					//	if appointment date and time is equal to or greater than current datetime then show noshow button
+					
+					echo "<td class='table-width'>";
+					$currentDate = strtotime(date('Y-m-d H:i'));
+					$aptDate = strtotime($row['apt_date']." ".$row['apt_time']);
+					if($currentDate>=$aptDate){
+						
+						 echo "<a href='noshow.php?id=" . $row['aid']. "' class='button cancel'>No-Show</a>";
+					}
+					else{
+
+						echo "<a href='apt-cancel.php?id=" . $row['aid'] . "' class='button cancel'>Cancel</a></td>";
+					}
+				
+				}
+				//finish
+				
+				else {
 					?>
 					<td class='table-width'> <button class='button disableBtn '>Confirm</button>
                 <button class='button disableBtn'>Cancel</button></td>

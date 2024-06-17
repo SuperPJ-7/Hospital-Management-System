@@ -13,7 +13,7 @@
 	<div class="apt-search">
 
 		<input type="text" id="apt-id" class="input" placeholder="Enter appointment-id">
-		<button class="button" onclick="aptSearch()">Search</button>
+		<button class="button" onclick="patientAptSearch()">Search</button>
 	</div>
 
 </div>

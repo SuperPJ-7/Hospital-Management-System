@@ -1,6 +1,7 @@
 //filter appointment
 document.getElementById('apt-status').addEventListener('change',function(event){
   let status = event.target.value;
+  console.log(status);
   let xhr = new XMLHttpRequest();
   xhr.open("POST","http://localhost/myhms/patient/patient_apt_search.php",true);
   xhr.onload = function(){
@@ -14,7 +15,7 @@ document.getElementById('apt-status').addEventListener('change',function(event){
 
 //appointment search ajax
 
-function aptSearch(){
+function patientAptSearch(){
     let apt_id = document.getElementById('apt-id').value.trim();
     // console.log(isNaN(apt_id))
     if((apt_id<=0 || isNaN(apt_id)) && apt_id!=''){

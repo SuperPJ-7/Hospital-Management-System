@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 21, 2024 at 09:19 PM
+-- Generation Time: Jun 16, 2024 at 06:46 AM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -37,8 +37,8 @@ CREATE TABLE `admin` (
 -- Dumping data for table `admin`
 --
 
-INSERT INTO `admin` (`email`, `password`, `username`) VALUES
-('admin@gmail.com', 'admin', 'admin');
+-- INSERT INTO `admin` (`email`, `password`, `username`) VALUES
+-- ('admin@gmail.com', 'admin', 'admin');
 
 -- --------------------------------------------------------
 
@@ -59,17 +59,38 @@ CREATE TABLE `appointment` (
 -- Dumping data for table `appointment`
 --
 
-INSERT INTO `appointment` (`aid`, `patient_id`, `doctor_id`, `apt_date`, `apt_time`, `apt_status`) VALUES
-(1, 2, 1, '2024-03-16', '20:40', 0),
-(2, 2, 1, '2024-03-16', '20:40', 1),
-(3, 2, 15, '2024-03-16', '20:51', 1),
-(5, 2, 15, '2024-03-29', '05:05', 4),
-(6, 2, 21, '2024-03-22', '18:49', 3),
-(7, 1, 4, '2024-03-23', '05:03', 4),
-(8, 1, 15, '2024-04-05', '06:06', 0),
-(9, 1, 15, '2024-03-28', '02:03', 4),
-(10, 1, 15, '2024-03-25', '02:23', 4),
-(11, 2, 4, '2024-04-29', '04:03', 3);
+-- INSERT INTO `appointment` (`aid`, `patient_id`, `doctor_id`, `apt_date`, `apt_time`, `apt_status`) VALUES
+-- (1, 2, 1, '2024-03-16', '20:40', 0),
+-- (2, 2, 1, '2024-03-16', '20:40', 1),
+-- (3, 2, 15, '2024-03-16', '20:51', 1),
+-- (5, 2, 15, '2024-03-29', '05:05', 4),
+-- (6, 2, 21, '2024-03-22', '18:49', 3),
+-- (7, 1, 4, '2024-03-23', '05:03', 4),
+-- (8, 1, 15, '2024-04-05', '06:06', 0),
+-- (9, 1, 15, '2024-03-28', '02:03', 4),
+-- (10, 1, 15, '2024-03-25', '02:23', 4),
+-- (11, 2, 4, '2024-04-29', '04:03', 3),
+-- (12, 1, 22, '2024-06-20', '01:02', 3);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `contact`
+--
+
+CREATE TABLE `contact` (
+  `email` varchar(50) NOT NULL,
+  `name` varchar(50) DEFAULT NULL,
+  `phone` varchar(11) DEFAULT NULL,
+  `msg` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `contact`
+--
+
+-- INSERT INTO `contact` (`email`, `name`, `phone`, `msg`) VALUES
+-- ('prajjwal@gmail.com', 'Prajjwal', '1234567890', 'hello');
 
 -- --------------------------------------------------------
 
@@ -93,12 +114,12 @@ CREATE TABLE `doctor` (
 -- Dumping data for table `doctor`
 --
 
-INSERT INTO `doctor` (`did`, `name`, `spec`, `contact`, `email`, `lic`, `password`, `address`, `status`) VALUES
-(1, 'Issac Newton', 'Neurologist', 111111111, 'issacnewton@gmail.com', 'ntntntntntnt', 'newton', 'Hetauda-4', 1),
-(4, 'Prajjwal Gwachha', 'Neurologist', 2147483647, 'prajjwal5853@gmail.com', 'alsjfsldfjsf', 'pj123', 'Hetauda-4', 1),
-(15, 'df', 'General', 3444, 'admin@gmail.com', 'alsjfsos34', 'admin', 'Hetauda-4', 1),
-(21, 'Baburam Bhattarai', 'Dermatologist', 2147483647, 'babu@gmail.com', 'alsjfsldfjsf3', 'babu', 'Hetauda-4', 1),
-(22, 'Robert Jr. Oppenheimer', 'General', 2147483647, 'manhattanproject@gmail.com', 'P1ut0n1um', 'cillian', 'California', 0);
+-- INSERT INTO `doctor` (`did`, `name`, `spec`, `contact`, `email`, `lic`, `password`, `address`, `status`) VALUES
+-- (1, 'Issac Newton', 'Neurologist', 111111111, 'issacnewton@gmail.com', 'ntntntntntnt', 'newton', 'Hetauda-4', 1),
+-- (4, 'Prajjwal Gwachha', 'Neurologist', 2147483647, 'prajjwal5853@gmail.com', 'alsjfsldfjsf', 'pj123', 'Hetauda-4', 1),
+-- (15, 'df', 'General', 3444, 'admin@gmail.com', 'alsjfsos34', 'admin', 'Hetauda-4', 1),
+-- (21, 'Baburam Bhattarai', 'Dermatologist', 2147483647, 'babu@gmail.com', 'alsjfsldfjsf3', 'babu', 'Hetauda-4', 1),
+-- (22, 'Robert Jr. Oppenheimer', 'General', 2147483647, 'manhattanproject@gmail.com', 'P1ut0n1um', 'cillian', 'California', 1);
 
 -- --------------------------------------------------------
 
@@ -119,10 +140,10 @@ CREATE TABLE `nurse` (
 -- Dumping data for table `nurse`
 --
 
-INSERT INTO `nurse` (`nid`, `name`, `email`, `contact`, `gender`, `dob`) VALUES
-(1, 'Adele', 'rollinginthedeep@gmail.com', '333333333333', 'Female', '2002-02-23'),
-(3, 'Katy Perrie', 'kattiperrie@gmail.com', '34234443434', 'Female', '2002-02-23'),
-(5, 'Jayoma', 'attorneyjayoma@gmail.com', '1100110010', 'male', '2001-03-27');
+-- INSERT INTO `nurse` (`nid`, `name`, `email`, `contact`, `gender`, `dob`) VALUES
+-- (1, 'Adele', 'rollinginthedeep@gmail.com', '333333333333', 'Female', '2002-02-23'),
+-- (3, 'Katy Perrie', 'kattiperrie@gmail.com', '34234443434', 'Female', '2002-02-23'),
+-- (5, 'Jayoma', 'attorneyjayoma@gmail.com', '1100110010', 'male', '2001-03-27');
 
 -- --------------------------------------------------------
 
@@ -144,9 +165,9 @@ CREATE TABLE `patient` (
 -- Dumping data for table `patient`
 --
 
-INSERT INTO `patient` (`pid`, `name`, `cont`, `dob`, `gender`, `email`, `password`) VALUES
-(1, 'Madhav Kumar Nepal', 2147483647, '2024-03-27', 'male', 'makune@gmail.com', 'admin'),
-(2, 'Jhalanath Khanal', 2147483647, '2024-03-19', 'male', 'jhanal@gmail.com', 'jhanal');
+-- INSERT INTO `patient` (`pid`, `name`, `cont`, `dob`, `gender`, `email`, `password`) VALUES
+-- (1, 'Madhav Kumar Nepal', 2147483647, '2024-03-27', 'male', 'makune@gmail.com', 'admin'),
+-- (2, 'Jhalanath Khanal', 2147483647, '2024-03-19', 'male', 'jhanal@gmail.com', 'jhanal');
 
 -- --------------------------------------------------------
 
@@ -169,11 +190,11 @@ CREATE TABLE `prescription` (
 -- Dumping data for table `prescription`
 --
 
-INSERT INTO `prescription` (`pres_id`, `patient_id`, `doctor_id`, `medication`, `dosage`, `frequency`, `date`, `diagnosis`) VALUES
-(4, 1, 4, 'Antibiotic', '100mg', 'Twice a day after meal and din', '2024-03-22', 'Malaria'),
-(5, 1, 4, 'fgh', 'gh', 'hg', '2024-03-22', 'gh'),
-(6, 1, 4, 'fgh', 'gh', 'hg', '2024-03-22', 'gh'),
-(8, 1, 15, 'PSG', '200ml', '4 times a day', '2024-04-08', 'Tuberculosis');
+-- INSERT INTO `prescription` (`pres_id`, `patient_id`, `doctor_id`, `medication`, `dosage`, `frequency`, `date`, `diagnosis`) VALUES
+-- (4, 1, 4, 'Antibiotic', '100mg', 'Twice a day after meal and din', '2024-03-22', 'Malaria'),
+-- (5, 1, 4, 'fgh', 'gh', 'hg', '2024-03-22', 'gh'),
+-- (6, 1, 4, 'fgh', 'gh', 'hg', '2024-03-22', 'gh'),
+-- (8, 1, 15, 'PSG', '200ml', '4 times a day', '2024-04-08', 'Tuberculosis');
 
 -- --------------------------------------------------------
 
@@ -194,8 +215,8 @@ CREATE TABLE `prescriptionfeedback` (
 -- Dumping data for table `prescriptionfeedback`
 --
 
-INSERT INTO `prescriptionfeedback` (`fid`, `pid`, `patient_id`, `doctor_id`, `txt`, `date`) VALUES
-(12, 4, 1, 4, 'I am all better now thanks to this', '2024-05-20 20:11:18');
+-- INSERT INTO `prescriptionfeedback` (`fid`, `pid`, `patient_id`, `doctor_id`, `txt`, `date`) VALUES
+-- (12, 4, 1, 4, 'I am all better now thanks to this', '2024-05-20 20:11:18');
 
 --
 -- Indexes for dumped tables
@@ -215,6 +236,12 @@ ALTER TABLE `appointment`
   ADD PRIMARY KEY (`aid`),
   ADD KEY `patient_id` (`patient_id`),
   ADD KEY `doctor_id` (`doctor_id`);
+
+--
+-- Indexes for table `contact`
+--
+ALTER TABLE `contact`
+  ADD PRIMARY KEY (`email`);
 
 --
 -- Indexes for table `doctor`
@@ -263,7 +290,7 @@ ALTER TABLE `prescriptionfeedback`
 -- AUTO_INCREMENT for table `appointment`
 --
 ALTER TABLE `appointment`
-  MODIFY `aid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `aid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `doctor`

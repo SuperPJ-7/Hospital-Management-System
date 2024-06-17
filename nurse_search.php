@@ -23,7 +23,7 @@ include('dbconfig.php');
             echo "<td class='table-width'>".$row['dob']."</td>";
 			echo "<td class='table-width'>".$row['gender']."</td>";
             echo "<td class='table-width'>" . $row['email'] . "</td>";
-            echo "<td> <a href='doc_delete.php?id=" . $row['nid'] . "' class='button'>Delete</a></td>";
+            echo "<td> <a href='doc_delete.php?id=" . $row['nid'] . "' class='button cancel'>Delete</a></td>";
             echo "</tr>";
         }
 

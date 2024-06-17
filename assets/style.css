@@ -4,7 +4,8 @@
    
 }
 body{
-    font-family: 'Poppins';font-size: 20px;    
+    font-family: 'Poppins';
+    font-size: 25px;    
     background: linear-gradient(to right, #1e48a3, #5ba5ea);    
     color:white;
     box-sizing: border-box;
@@ -24,10 +25,12 @@ body{
     display:flex;
     justify-content: center;
     color:white;
-    font:bold;
+    font-weight:bold;
     align-items:center;
 }
-
+a[onclick="logout()"]:hover{
+    cursor:pointer;
+}
 .nav .nav-links{
     width:60%;
     margin-right:20px;
@@ -79,7 +82,7 @@ body{
 #dropdown .logout-container{
     display: flex;
     justify-content: flex-end;
-   
+    font-size:22px;
 }
 .logout-container a{
     text-decoration: none;
@@ -136,7 +139,7 @@ body{
     background:#1a3161;
     color:white;
     border-radius: 17px;
-    font-size:15px;
+    font-size:18px;
     width:30%;
     padding:1px;
     display: flex;
@@ -163,6 +166,7 @@ body{
 
 }
  .email_password{
+    font-size:20px;
     margin:20px;
     display: flex;
     justify-content:space-around;
@@ -182,8 +186,8 @@ texarea:focus{
 .form-container .btn-submit{
     background:#1f4aa5;
     color:white;
-    height:2.3rem;
-    width:7rem;
+    height:52px;
+    width:13rem;
     border-radius:9px;
     font-size: 1.2rem;
     margin-top:20px;
@@ -229,6 +233,7 @@ main .patient-container{
     height:30%;
     display:flex;
     justify-content: space-evenly;
+    margin-top:43px;
 }
 .box{
     background:white;

@@ -3,7 +3,8 @@
 <?php
 include 'dbconfig.php';
 $spec = $_POST['spec'];
-$query = "SELECT distinct name,did from doctor where spec='$spec' and status='1'";
+$query = "SELECT name,did from doctor where spec='$spec' and status='1'";
+echo $query;
 $result = mysqli_query($conn,$query);
 
 

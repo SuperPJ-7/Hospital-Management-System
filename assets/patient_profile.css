@@ -20,6 +20,7 @@ p{
     font-size:38px;
     font-weight:bold;
     margin-left:28px;
+    font-variant: small-caps;
 }
 .contact{
     display:flex;

@@ -26,7 +26,7 @@ include('dbconfig.php');
             echo "<td class='table-width'>" . $row['email'] . "</td>";
             echo "<td class='table-width'>" . $row['password'] . "</td>";
             echo "<td class='table-width'>" . $row['lic'] . "</td>";
-            echo "<td> <a href='doc_delete.php?id=" . $row['did'] . "' class='button'>Delete</a></td>";
+            echo "<td> <a href='doc_delete.php?id=" . $row['did'] . "' class='cancel button'>Delete</a></td>";
             echo "</tr>";
         }
 

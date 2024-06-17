@@ -37,7 +37,7 @@ include 'dbconfig.php';
              echo "<td class='table-width'>".$row['frequency']."</td>";
              echo "<td class='table-width'>".$row['date']."</td>";
              echo "<td class='table-width'> <a href='prescribeEdit.php?id=" . $row['pres_id']. "' class='button'>Edit</a>
-             <a href='presDelete.php?id=" . $row['pres_id'] . "' class='button cancel'>Delete</a></td>";
+             </td>";
             }
         ?>
     </table>

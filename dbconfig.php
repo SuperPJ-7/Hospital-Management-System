@@ -1,6 +1,6 @@
 <?php
 $server = "localhost";
-$dbname = "hms";
+$dbname = "myhms";
 $un = "root";
 $pw = "";
 $conn = new mysqli($server,$un,$pw,$dbname);

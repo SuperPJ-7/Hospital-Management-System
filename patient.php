@@ -50,7 +50,7 @@
 				</div>
 				<div id="dropdown">
 					<div class="logout-container">
-					<a href="logout.php">Log out</a>
+					<a onclick="logout()">Log out</a>
 					</div>
 				</div>
 			</div>
@@ -61,11 +61,11 @@
 		<div class="patient-container">
 			<div class="patient-links">
 				<a href="#" onclick="showcontentPatient('profcon',this)" id='prof' class="links active">Profile</a>
-				<a href="#" onclick="showcontentPatient('bk-apt',this)" class="links">Book Appointment</a>
+				<a href="#" onclick="showcontentPatient('bk-apt',this)" class="links">Booking</a>
                 <a href="#" onclick="showcontentPatient('up-apt',this)" class="links">Appointments</a>
 				
 				<a href="#" onclick="showcontentPatient('pres',this)" class="links">Prescriptions</a>
-				<a href="#"  class="links">Logout</a>
+				<a onclick="logout()"  class="links">Logout</a>
 			</div>
 			<div id="profcon" class="content">
 				<?php include ('patient_profile.php'); ?>

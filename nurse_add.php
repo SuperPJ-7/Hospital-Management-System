@@ -8,6 +8,14 @@ if (isset($_POST['submit'])) {
     $contact = $_POST['contact'];
     
     if ($name != '' && $email != '' && $contact != '' && $dob!='' && $gender!='') {
+        $pattern = '/^[a-zA-Z]+\s[a-zA-Z]+$/';
+            if(!preg_match($pattern,$name)){
+                echo "<script>
+                alert('Invalid name');
+                location.href = 'admin.php';
+            </script>";
+                die();
+            }
             $docadd_query = "INSERT INTO nurse(name,email,contact,dob,gender) VALUES('$name','$email','$contact','$dob','$gender')";
             $rows = mysqli_query($conn, $docadd_query);
             if ($rows > 0) {

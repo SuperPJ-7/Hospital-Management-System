@@ -2,7 +2,11 @@
 include 'dbconfig.php';
 ?>
 <div id="prescription" class="content hidden">
-			
+<div class="search">					
+					<!-- search using AJAX -->
+	<input type="text" id="pres_id" placeholder="Enter prescription-id">
+	<button class="button" onclick="pres_search()">Search</button>
+</div>
 <!-- prescription table start -->
 <div class="table-container" id="prescription-table">
     <table cellspacing="0" class="table">

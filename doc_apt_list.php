@@ -9,12 +9,13 @@
 			<option value="pending">Pending</option>
 			<option value="completed">Completed</option>
 			<option value="cancelled">Cancelled</option>
+			<option value="no-show">No-show</option>
 		</select>
 	</div>
 	<div class="apt-search">
 
 		<input type="text" id="apt-id" class="input" placeholder="Enter appointment-id">
-		<button class="button" onclick="aptSearch()">Search</button>
+		<button class="button" onclick="doctorAptSearch()">Search</button>
 	</div>
 
 </div>
@@ -59,6 +60,9 @@
 					case 4:
 						$status = 'Completed';
 						break;
+					case 5:
+						$status = 'No-show';
+						break;
 					default:
 						$status = 'No info';
 				}
@@ -77,7 +81,24 @@
 					echo "<td class='table-width'> <a href='apt-confirm.php?id=" . $row['aid']. "' class='button'>Confirm</a>
                 <a href='apt-cancel.php?id=" . $row['aid'] . "' class='button cancel'>Cancel</a></td>";
                                  
-				} else {
+				} 
+				else if($status == 'Scheduled'){
+					//	if appointment date and time is equal to or greater than current datetime then show noshow button
+					
+					echo "<td class='table-width'>";
+					$currentDate = strtotime(date('Y-m-d H:i'));
+					$aptDate = strtotime($row['apt_date']." ".$row['apt_time']);
+					if($currentDate>=$aptDate){
+						
+						 echo "<a href='noshow.php?id=" . $row['aid']. "' class='button cancel'>No-Show</a>";
+					}
+					else{
+
+						echo "<a href='apt-cancel.php?id=" . $row['aid'] . "' class='button cancel'>Cancel</a></td>";
+					}
+				
+				}
+				else {
 					?>
 					<td class='table-width'> <button class='button disableBtn '>Confirm</button>
                 <button class='button disableBtn'>Cancel</button></td>

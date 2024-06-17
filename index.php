@@ -34,8 +34,8 @@ if(isset($_SESSION['userid'])){
             <div class="nav-links">
                 <ul>
                     <li><a href="#">Home</a></li>
-                    <li><a href="#">About us</a></li>
-                    <li><a href="#">Contact</a></li>
+                    <li><a href="services.php">About us</a></li>
+                    <li><a href="contact.php">Contact</a></li>
                 </ul>
             </div>
         </div>
@@ -47,7 +47,7 @@ if(isset($_SESSION['userid'])){
                 <!-- <img src="assets/images/hospital.png" alt="hospital icon"> -->
                 <i class="fa-solid fa-truck-medical fa-fade fa-9x" style="color: #ffffff;"></i>
             </div>
-            <div class="form-container">
+            <div class="form-container" >
                 <div class="login-role">
                   <div class="toggle-role">
                     <span id='role-patient' onclick="showForm('patient-login',this)" class="role active">Patient</span>
@@ -59,12 +59,12 @@ if(isset($_SESSION['userid'])){
                 <!-- login patient form -->
                 <div class="form" id="patient-login">
                     <div>Login as Patient</div>
-                    <form action="patient_login.php" method="POST">
+                    <form action="patient_login.php" method="POST" onsubmit="return validate('pat-email')">
                         <div class="email_password">
 
                             <div class="email">
                                 Email<br>
-                                <input type="email" name="email" class="input"  required>
+                                <input type="text" name="email" class="input" id="pat-email"  required>
                                 <br>
                                 <span ></span>
                             </div>
@@ -80,7 +80,7 @@ if(isset($_SESSION['userid'])){
                 <!-- login admin form -->
                 <div class="form hidden" id='admin-login'>
                     <div>Login as Admin</div>
-                    <form action="admin_login.php" method="POST" >
+                    <form action="admin_login.php" method="POST" onsubmit="return validate()">
                         <div class="email_password">
 
                             <div class="email">
@@ -101,12 +101,12 @@ if(isset($_SESSION['userid'])){
                 <!-- login doctor form -->
                 <div id='doctor-login' class="form hidden">
                     <div>Login as Doctor</div>
-                    <form action="doctor_login.php" method="POST" >
+                    <form action="doctor_login.php" method="POST" onsubmit="return validate('doc-email')">
                         <div class="email_password">
 
                             <div class="email">
                                 Email<br>
-                                <input type="text" name="email" class="input" required>
+                                <input type="text" name="email" class="input" id="doc-email" required>
                                 <br>
                                 <span></span>
                             </div>

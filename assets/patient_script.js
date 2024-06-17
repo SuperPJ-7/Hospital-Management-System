@@ -36,7 +36,7 @@ function showcontentPatient(id,currentlink){
 //adding event to select element in appointment booking form
 document.getElementById('spec-select').addEventListener('change',function(event){
   let spec = event.target.value;
-  // console.log(spec);
+  console.log(spec);
    const xhr = new XMLHttpRequest();
    xhr.onload = function(){
     if(xhr.status==200){
@@ -44,7 +44,7 @@ document.getElementById('spec-select').addEventListener('change',function(event)
       document.getElementById('doc-select').innerHTML = xhr.responseText;
     }
    }
-   xhr.open('POST','doc_load.php',true);
+   xhr.open('POST','http://localhost/myhms/doc_load.php',true);
    xhr.setRequestHeader('Content-type',"application/x-www-form-urlencoded");
    xhr.send("spec="+spec);
 })

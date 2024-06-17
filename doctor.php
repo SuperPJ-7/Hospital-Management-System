@@ -49,7 +49,7 @@
 				</div>
 				<div id="dropdown">
 					<div class="logout-container">
-					<a href="logout.php">Log out</a>
+					<a onclick="logout()">Log out</a>
 					</div>
 				</div>
 			</div>
@@ -63,7 +63,7 @@
 				<a href="#" onclick="showcontentDoctor('apt',this)" class="links">Appointments</a>
                 
 				<a href="#" onclick="showcontentDoctor('pres',this)" class="links">Prescriptions</a>
-				<a href="#"  class="links">Logout</a>
+				<a onclick="logout()"  class="links">Logout</a>
 			</div>
 			<div id="doc-profcon" class="content">
 				<?php include 'doctor_profile.php'; ?>

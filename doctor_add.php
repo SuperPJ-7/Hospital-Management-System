@@ -10,6 +10,20 @@ if (isset($_POST['submit'])) {
     $address = $_POST['address'];
     $license = $_POST['license'];
     //echo $name . '' . $email . '' . $password . '' . $confirm . '' . $spec . '' . $contact . '' . $license . '';
+    $matchLicense = "Select count(*) from doctor where lic='$license'";
+    $count = mysqli_num_rows(mysqli_query($conn,$matchLicense));
+    if($count == 1){
+        $updateQuery = "Update doctor set status=TRUE where lic='$license'";
+        $result = mysqli_query($conn,$updateQuery);
+        if($result>0){
+            echo "<script>
+                        alert('Doctor added successfully');
+                        location.href = 'admin.php';
+                </script>";
+            die();
+        }
+    }
+    
     if ($name != '' && $email != '' && $password != '' && $confirm != '' && $spec != '' && $contact != '' && $address!='' && $license != '') {
         if ($password != $confirm) {
             echo "<script>
@@ -17,7 +31,26 @@ if (isset($_POST['submit'])) {
                     location.href = 'admin.php';
                 </script>";
         } else {
+            $pattern = '/^[a-zA-Z]+\s[a-zA-Z]+$/';
+            if(!preg_match($pattern,$name)){
+                echo "<script>
+                alert('Invalid name');
+                location.href = 'admin.php';
+            </script>";
+                die();
+            }
+            $pattern = '/^[9]\d{9}$/';
+
+            if(!preg_match($pattern,$contact)){
+                echo "<script>
+                alert('Invalid phone');
+                location.href = 'admin.php';
+            </script>";
+                die();
+    
+            }
             try{
+
             $docadd_query = "INSERT INTO doctor(name,spec,contact,email,lic,password,address) VALUES('$name','$spec','$contact','$email','$license','$password','$address')";
             $rows = mysqli_query($conn, $docadd_query);
                 if ($rows > 0) {

@@ -60,7 +60,7 @@ document.getElementById('doc-apt-status').addEventListener('change',function(eve
 
 //appointment search ajax
 
-function aptSearch(){
+function doctorAptSearch(){
   let apt_id = document.getElementById('apt-id').value.trim();
   // console.log(isNaN(apt_id))
   if((apt_id<=0 || isNaN(apt_id)) && apt_id!=''){
