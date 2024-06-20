@@ -2,15 +2,15 @@
 session_start();
 if(isset($_SESSION['userid'])){
     if($_SESSION['userid']==1){
-        header('location:admin.php');
+        header('location:admin/admin.php');
         exit;
     }
     else if($_SESSION['userid']==2){
-        header('location:doctor.php');
+        header('location:doctor/doctor.php');
         exit;
     }
     else if($_SESSION['userid']==3){
-        header('location:patient.php');
+        header('location:patient/patient.php');
         exit;
     }
 }
@@ -21,7 +21,7 @@ if(isset($_SESSION['userid'])){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hospital Management System</title>
-    <link rel="stylesheet" type="text/css" href="assets/style.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
     <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
     
 </head>
@@ -59,18 +59,18 @@ if(isset($_SESSION['userid'])){
                 <!-- login patient form -->
                 <div class="form" id="patient-login">
                     <div>Login as Patient</div>
-                    <form action="patient_login.php" method="POST" onsubmit="return validate('pat-email')">
+                    <form action="patient_login.php" method="POST" onsubmit="return validate('pat-email','pat-pw',false)">
                         <div class="email_password">
 
                             <div class="email">
                                 Email<br>
-                                <input type="text" name="email" class="input" id="pat-email"  required>
+                                <input type="text" name="email" class="input" id="pat-email"  >
                                 <br>
                                 <span ></span>
                             </div>
                             <div class="password">
                                 Password<br>
-                                <input type="password" name="password" class="input"id="password" required><br>
+                                <input type="password" name="password" class="input" id="pat-pw" ><br>
                                 <button type="submit" name="submit" class="btn-submit">Login</button>
                             </div>
                         </div>
@@ -80,18 +80,18 @@ if(isset($_SESSION['userid'])){
                 <!-- login admin form -->
                 <div class="form hidden" id='admin-login'>
                     <div>Login as Admin</div>
-                    <form action="admin_login.php" method="POST" onsubmit="return validate()">
+                    <form action="admin_login.php" method="POST" onsubmit="return validate('doc-uname','admin-pw',true)">
                         <div class="email_password">
 
                             <div class="email">
                                 Username<br>
-                                <input type="text" name="username" class="input" required>
+                                <input type="text" id="doc-uname" name="username" class="input" >
                                 <br>
                                 <span ></span>
                             </div>
                             <div class="password">
                                 Password<br>
-                                <input type="password" name="password" class="input"  required><br>
+                                <input type="password" id="admin-pw" name="password" class="input"><br>
                                 <button type="submit" name="submit" class="btn-submit">Login</button>
                             </div>
                         </div>
@@ -101,18 +101,18 @@ if(isset($_SESSION['userid'])){
                 <!-- login doctor form -->
                 <div id='doctor-login' class="form hidden">
                     <div>Login as Doctor</div>
-                    <form action="doctor_login.php" method="POST" onsubmit="return validate('doc-email')">
+                    <form action="doctor_login.php" method="POST" onsubmit="return validate('doc-email','doc-pw',false)" name="loginForm">
                         <div class="email_password">
 
                             <div class="email">
                                 Email<br>
-                                <input type="text" name="email" class="input" id="doc-email" required>
+                                <input type="text" name="email" class="input" id="doc-email" >
                                 <br>
                                 <span></span>
                             </div>
                             <div class="password">
                                 Password<br>
-                                <input type="password" name="password" class="input"  required><br>
+                                <input type="password" name="password" id="doc-pw" class="input"><br>
                                 <button type="submit" name="submit" class="btn-submit">Login</button>
                             </div>
                         </div>
@@ -122,7 +122,8 @@ if(isset($_SESSION['userid'])){
 
         </div>
     </main>
-    <script src="assets/script.js"></script>
+    <script src="assets/js/script.js"></script>
+    <script src="assets/js/validationAndForm.js"></script>
     <script src="https://kit.fontawesome.com/a865739a53.js" crossorigin="anonymous"></script>
 </body>
 </html>

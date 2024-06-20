@@ -21,8 +21,8 @@ if(isset($_SESSION['userid'])){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hospital Management System</title>
-    <link rel="stylesheet" type="text/css" href="assets/style.css">
-    <link rel="stylesheet" type="text/css" href="assets/contactForm.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/contactForm.css">
 
    
     
@@ -42,7 +42,7 @@ if(isset($_SESSION['userid'])){
             </div>
         </div>
     </nav>
-    <div class="container contact-form" style="font-family: 'IBM Plex Sans', sans-serif;">
+    <div class="container contact-form" >
             <div class="contact-image">
                 <img src="https://image.ibb.co/kUagtU/rocket_contact.png" alt="rocket_contact"/>
             </div>

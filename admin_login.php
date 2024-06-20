@@ -1,12 +1,11 @@
 <?php
 session_start();
-if (isset($_SESSION["username"]) && $_SESSION["password"]){
-    if($_SESSION['userid']==1){
-        header('location:admin.php');
-        exit;
-    }
-}
 include ('dbconfig.php');
+if (isset($_SESSION["username"]) && $_SESSION['userid']==1){    
+    header('location:admin/admin.php');
+    exit;    
+}
+
 
 if(isset($_POST['submit'])){    
     $username = $_POST['username'];
@@ -23,7 +22,7 @@ if(isset($_POST['submit'])){
                 $_SESSION['userid'] = 1;
             }
             // echo "<script>window.location.href='admin.php'</script>";
-            header('location:admin.php');
+            header('location:admin/admin.php');
             exit;
         }
         else{
@@ -34,7 +33,7 @@ if(isset($_POST['submit'])){
     }
     else{
         echo "<script>alert('all fields must be provided');
-        window.location.href='index.html';
+        window.location.href='index.php';
         </script>";
     }
 

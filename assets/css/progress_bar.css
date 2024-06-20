@@ -1,0 +1,33 @@
+.progress-bar {
+    background-color: #007bff;
+}
+
+.containerDoc {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+}
+.doctor {
+    border: 1px solid #ccc;
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 5px;
+}
+.doctor .name {
+    font-size: 1.2em;
+    margin-bottom: 5px;
+}
+.doctor .appointments {
+    font-size: 0.9em;
+    margin-bottom: 10px;
+}
+.progress-bar {
+    background-color: #007bff;
+    height: 20px;
+    border-radius: 5px;
+}
+.progress {
+    background-color: #e9ecef;
+    border-radius: 5px;
+    overflow: hidden;
+}

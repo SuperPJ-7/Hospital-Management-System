@@ -1,9 +1,5 @@
-<?php
-    session_start();
-    include('../dbconfig.php');
-    if(!isset($_SESSION['username'])){
-        header('location:index.php');
-    }
+<?php    
+    include('authorize.php');
     if(!isset($_GET['id'])){
         header('location:prescriptions.php');
     }
@@ -11,11 +7,10 @@
         $delQuery = 'Delete from prescriptionfeedback where pid='.$_GET["id"];
         $row = mysqli_query($conn,$delQuery);
         if($row>0){
-           header('location:../patient.php');
+           header('location:patient.php');
            die();
         }
-    }
-    
+    }    
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -23,8 +18,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hospital Management System</title>
-    <link rel="stylesheet" type="text/css" href="../assets/style.css">
-    <link rel="stylesheet" type="text/css" href="../assets/doc_style.css">
+    <link rel="stylesheet" type="text/css" href="../assets/css/style.css">
+    <link rel="stylesheet" type="text/css" href="../assets/css/doc_style.css">
     <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
     <style>
     body {
@@ -84,13 +79,13 @@
             </form>
         </div></center>
     </main>
-    <script src='assets/script.js'></script>
+    <script src='assets/js/script.js'></script>
     
 </body>
 </html>
 
-<?php
-    
+<?php    
+
     if(isset($_POST['submit'])){
         if(isset($_GET['did'])){
             $did = $_GET['did'];
@@ -115,13 +110,13 @@
                 if($rowAffected>0){
                     echo "<script>
                         alert('Feedback added successfully');
-                        window.location.href='../patient.php';
+                        window.location.href='patient.php';
                     </script>";
                 }
                 else{
                     echo "<script>
                         alert('Feedback could not be added');
-                        window.location.href='../patient.php';
+                        window.location.href='patient.php';
                     </script>";
                 
                 }
@@ -130,7 +125,7 @@
                 $errorMsg = $e->getMessage();
                 echo "<script>
                         alert('SQL Exception occurred'.$errorMsg);
-                        window.location.href='../patient.php';
+                        window.location.href='patient.php';
                     </script>";
                 
             }

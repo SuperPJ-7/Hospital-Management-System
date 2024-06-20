@@ -1,19 +1,24 @@
+<?php
+include('authorize.php');
+
+?>
 <!-- search using AJAX -->
 <div class="abovelist">
 
 	<div class="filter">
-		<select id="apt-status">
+		<select id="apt-status" onchange="filterApt(event,'../patient/patient_apt_search.php','patient-apt-table')">
 			<option value="all">All</option>
 			<option value="scheduled">Scheduled</option>
 			<option value="pending">Pending</option>
 			<option value="completed">Completed</option>
 			<option value="cancelled">Cancelled</option>
+			<option value="noshow">No-Show</option>
 		</select>
 	</div>
 	<div class="apt-search">
 
 		<input type="text" id="apt-id" class="input" placeholder="Enter appointment-id">
-		<button class="button" onclick="patientAptSearch()">Search</button>
+		<button class="button" onclick="Search('apt-id','patient-apt-table','../patient/patient_apt_search.php')">Search</button>
 	</div>
 
 </div>
@@ -56,6 +61,9 @@
 					case 4:
 						$status = 'Completed';
 						break;
+					case 5:
+						$status = 'No-Show';
+						break;
 					default:
 						$status = 'No info';
 				}
@@ -71,7 +79,7 @@
 				echo "<td class='table-width'>" . $status . "</td>";
 				if ($status == 'Pending' || $status == 'Scheduled') {
 
-					echo "<td class='table-width'><a href='apt-cancel.php?id=" . $row['aid'] . "' class='button cancel'>Cancel</a></td>";
+					echo "<td class='table-width'><a href='apt_cancel.php?id=" . $row['aid'] . "' class='button cancel'>Cancel</a></td>";
                                  
 				} else {
 				

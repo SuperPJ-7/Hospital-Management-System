@@ -1,6 +1,5 @@
 <?php
-    session_start();
-    include ('../dbconfig.php');
+include('authorize.php');
 ?>
 
 <table cellspacing="0" class="table">
@@ -17,8 +16,8 @@
         <tr>
             <!-- fetching table rows -->
         <?php
-            if(isset($_POST['pres-id'])){
-                $pres_id = $_POST['pres-id'];
+            if(isset($_POST['key'])){
+                $pres_id = $_POST['key'];
             }
             $pid = $_SESSION['patient-id'];
             $query = "SELECT pres_id,doctor_id,doctor.name as dname,diagnosis,medication,dosage,frequency,date from prescription,doctor where doctor_id=did and patient_id='$pid'";
@@ -41,12 +40,12 @@
                 $data = mysqli_query($conn,$query);
                 $rows = mysqli_num_rows($data);
                 if($rows>0){
-                    echo "<td class='table-width'> <a href='patient/feedback.php?id=" . $pres_id. "&del=0' class='button'>Edit</a>
+                    echo "<td class='table-width'> <a href='feedback.php?id=" . $pres_id. "&del=0' class='button'>Edit</a>
 
-                    <a href='./patient/feedback.php?id=" . $pres_id . "&del=1' class='button cancel'>Delete</a></td>";
+                    <a href='feedback.php?id=" . $pres_id . "&del=1' class='button cancel'>Delete</a></td>";
                 }
                 else{
-                    echo "<td class='table-width'> <a href='patient/feedback.php?id=" . $pres_id. "&del=0&pid=".$pid."&did=".$row['doctor_id']."' class='button'>Add</a></td>";
+                    echo "<td class='table-width'> <a href='feedback.php?id=" . $pres_id. "&del=0&pid=".$pid."&did=".$row['doctor_id']."' class='button'>Add</a></td>";
                     
                 }
 

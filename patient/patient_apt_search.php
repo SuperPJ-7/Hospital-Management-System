@@ -1,6 +1,5 @@
 <?php
-    session_start();
-    include ('../dbconfig.php');
+include('authorize.php');
 ?>
 
 <table cellspacing="0" class="table">
@@ -19,7 +18,7 @@
 			<!-- fetching table rows -->
 			<?php
 			$pid = $_SESSION['patient-id'];
-            @$aid = $_POST['aid'];
+            @$aid = $_POST['key'];
 			if(!isset($_SESSION['fq'])){
 				$filterQuery = '';
 			}
@@ -44,6 +43,9 @@
 						break;
 					case 'cancelled':
 						$filterQuery = " and (apt_status='2' or apt_status='1')";
+						break;
+					case 'noshow':
+						$filterQuery = " and apt_status='5'";
 						break;
 				}
 			}
@@ -72,6 +74,9 @@
 					case 4:
 						$status = 'Completed';
 						break;
+					case 5:
+						$status = 'No-Show';
+						break;
 					default:
 						$status = 'No info';
 				}
@@ -87,7 +92,7 @@
 				echo "<td class='table-width'>" . $status . "</td>";
 				if ($status == 'Pending' || $status == 'Scheduled') {
 
-					echo "<td class='table-width'><a href='apt-cancel.php?id=" . $row['aid'] . "' class='button cancel'>Cancel</a></td>";
+					echo "<td class='table-width'><a href='apt_cancel.php?id=" . $row['aid'] . "' class='button cancel'>Cancel</a></td>";
                                  
 				} else {
 				

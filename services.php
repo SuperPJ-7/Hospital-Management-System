@@ -21,7 +21,7 @@ if(isset($_SESSION['userid'])){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hospital Management System</title>
-    <link rel="stylesheet" type="text/css" href="assets/style.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
     <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
     <style>
         .main{
@@ -96,7 +96,7 @@ if(isset($_SESSION['userid'])){
             </div>
         </div>
     </main>
-    <script src="assets/script.js"></script>
+    <script src="assets/js/script.js"></script>
     <script src="https://kit.fontawesome.com/a865739a53.js" crossorigin="anonymous"></script>
 </body>
 </html>

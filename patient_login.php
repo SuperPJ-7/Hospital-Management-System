@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (isset($_SESSION["username"]) && $_SESSION['userid']==3){
-    header('location:patient.php');
+    header('location:http://localhost/myhms/patient/patient.php');
 
 }
 include ('dbconfig.php');
@@ -24,7 +24,7 @@ if(isset($_POST['submit'])){
                 $_SESSION['patient-id'] = $resultdata['pid'];
                 $_SESSION['userid'] = 3;
             }
-           header("location:patient.php?id=$pid");
+           header("location:patient/patient.php?id=$pid");
         }
         else{
             echo "<script>alert('invalid username or password');

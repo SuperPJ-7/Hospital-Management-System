@@ -1,10 +1,10 @@
 <?php
-require_once './dbconfig.php';
+include 'authorize.php';
 ?>
 <div class="search">
 
 <input type="text" id="pres-search" class="input" min="1" placeholder="Enter prescription id">
-<button class="button" onclick="presSearch()">Search</button>
+<button class="button" onclick="Search('pres-search','prescription-table','prescription_search.php')">Search</button>
 </div>
 			
 <!-- prescription table start -->
@@ -41,12 +41,12 @@ require_once './dbconfig.php';
                 $data = mysqli_query($conn,$query);
                 $rows = mysqli_num_rows($data);
                 if($rows>0){
-                    echo "<td class='table-width'> <a href='patient/feedback.php?id=" . $pres_id. "&del=0' class='button'>Edit</a>
+                    echo "<td class='table-width'> <a href='feedback.php?id=" . $pres_id. "&del=0' class='button'>Edit</a>
 
-                    <a href='./patient/feedback.php?id=" . $pres_id . "&del=1' class='button cancel'>Delete</a></td>";
+                    <a href='feedback.php?id=" . $pres_id . "&del=1' class='button cancel'>Delete</a></td>";
                 }
                 else{
-                    echo "<td class='table-width'> <a href='patient/feedback.php?id=" . $pres_id. "&del=0&pid=".$pid."&did=".$row['doctor_id']."' class='button'>Add</a></td>";
+                    echo "<td class='table-width'> <a href='feedback.php?id=" . $pres_id. "&del=0&pid=".$pid."&did=".$row['doctor_id']."' class='button'>Add</a></td>";
                     
                 }
 
