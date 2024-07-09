@@ -26,14 +26,14 @@ if(isset($_POST['submit'])){
         }
         else{
             echo "<script>alert('invalid username or password');
-            location.href='index.php';
+            location.href='index.html';
             </script>";        
             
         }
     }
     else{
         echo "<script>alert('all fields must be provided');
-        window.location.href='index.php';
+        window.location.href='index.html';
         </script>";
     }
 
